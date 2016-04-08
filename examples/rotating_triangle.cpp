@@ -2,8 +2,15 @@
 
 #include<OpenGL/gl.h>
 
+RotatingTriangle::RotatingTriangle()
+{
+    m_rotating_angle = 0.0f;
+}
+
 bool RotatingTriangle::init()
 {
+    glEnable(GL_DEPTH_TEST);
+    glClearColor(0.5f, 0.5f, 0.5f, 0.5f); //this may not be required as display.cpp does this?
     return true;
 }
 
@@ -37,4 +44,4 @@ void RotatingTriangle::shutdown()
 {
 }
 
-void RotatingTriangle::on_resize(int width, int height){}
+void RotatingTriangle::on_resize(int width, int height){/*currently not implemented*/}

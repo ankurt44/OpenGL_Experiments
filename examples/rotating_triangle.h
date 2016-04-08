@@ -4,6 +4,7 @@
 class RotatingTriangle
 {
     public:
+        RotatingTriangle();
         bool init();
         void prepare(float dt);
         void render();
