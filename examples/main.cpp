@@ -14,14 +14,14 @@ int main(){
     //Shader shader("./res/basicShader");
     RotatingTriangle rt;
     while(!display.isClosed()){
-        display.clear(1.0f, 1.0f, 1.0f, 1.0f);
+        display.clear(1.0f, 1.0f, 1.0f, 0.0f);
         
         //shader.bind();
         //mesh.draw();
-        display.update();
-        rt.init();
+        //rt.init();
         rt.prepare(1.5f);
         rt.render();
+        display.update();
 
     }
     return 0;

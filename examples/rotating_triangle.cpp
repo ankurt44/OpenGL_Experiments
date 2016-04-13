@@ -1,7 +1,7 @@
 #include"rotating_triangle.h"
 
 #include<OpenGL/gl.h>
-
+#include<SDL.h>
 RotatingTriangle::RotatingTriangle()
 {
     m_rotating_angle = 0.0f;
@@ -32,12 +32,13 @@ void RotatingTriangle::render()
     glRotatef(m_rotating_angle, 0.0f, 0.0f, 1.0f);
     glBegin(GL_TRIANGLES);
         glColor3f(1.0f,0.0f,0.0f);
-        glVertex3f(-0.5f,-0.5f,-2.0f);
+        glVertex3f(-0.5f,-0.5f,-0.0f);
         glColor3f(0.0f,1.0f,0.0f);
-        glVertex3f(0.5f,-0.5f,-2.0f);
+        glVertex3f(0.5f,-0.5f,-0.0f);
         glColor3f(0.0f,0.0f,1.0f);
-        glVertex3f(0.0f,0.5f,-2.0f);
+        glVertex3f(0.0f,0.5f,-0.0f);
     glEnd();
+    //SDL_GL_SwapBuffers();
 }
 
 void RotatingTriangle::shutdown()
