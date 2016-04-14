@@ -3,6 +3,8 @@
  *read more on OpenGL wiki
  */
 #include"shader.h"
+#include"transform.h"
+
 #include<string>
 #include<iostream>
 #include<fstream>
@@ -36,6 +38,8 @@ Shader::Shader(const string& filename)
     ///validate correctness of program creation
     glValidateProgram(m_program);     
     checkShaderError(m_program, GL_LINK_STATUS, true, "Error: Program is invalid ");
+
+    m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
 }
 
 Shader::~Shader()
@@ -54,6 +58,13 @@ Shader::~Shader()
 void Shader::bind()
 {
     glUseProgram(m_program);
+}
+
+void Shader::update(const Transform& transform)
+{
+    glm::mat4 model = transform.get_model();
+
+    glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0] );
 }
 
 static GLuint createShader(const string& text, GLenum shadertype)
