@@ -20,7 +20,7 @@ class Camera
         //similar to get_model in transform.h
         inline glm::mat4 get_view_projection() const
         {
-            return m_perspective * glm::lookAt(m_position, m_position + m_forward, m_up);
+            return m_perspective* glm::lookAt(m_position, m_position + m_forward, m_up);
         }
     protected:
     private:

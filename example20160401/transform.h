@@ -9,7 +9,7 @@ class Transform
     public:     //position, rotation, scaling
         Transform(const glm::vec3& pos = glm::vec3(), 
                     const glm::vec3& rot = glm::vec3(), 
-                    const glm::vec3& scale = glm::vec3( 1.0, 1.0, 1.0)): 
+                    const glm::vec3& scale = glm::vec3( 1.0, 1.0, 0.0)): 
                     m_pos(pos), m_rot(rot), m_scale(scale){}
         
         //matrix containg transformation (pos, rot, scale) : model matrix

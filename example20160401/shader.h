@@ -2,6 +2,7 @@
 #define SHADER_H
 
 #include"transform.h"
+#include"camera.h"
 
 #include<string>
 #include<OpenGL/gl.h>
@@ -12,7 +13,7 @@ class Shader
         
         void bind(); //set the GPU in a state so that its using the vertex/frament shader that are part of this particular shader class
         
-        void update(const Transform& transform);
+        void update(const Transform& transform, const Camera& camera);
 
         virtual ~Shader();
     protected:

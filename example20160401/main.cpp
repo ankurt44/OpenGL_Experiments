@@ -4,6 +4,7 @@
 #include"mesh.h"
 #include"texture.h"
 #include"transform.h"
+#include"camera.h"
 
 #include<OpenGL/gl.h>
 int main(){
@@ -19,10 +20,10 @@ int main(){
                             Vertex(glm::vec3(-0.85,0.90,0), glm::vec2(0.0,0.0))
                         };*/
     Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]));
-    std::string loc = "/Users/ank/Documents/learnCpp/cppProgramming/cppLearning/ProgrammingTasks/GraphicsOpenGL/example20160401";
     Shader shader("./res/basicShader");
     Texture texture("./res/agnes.jpg");
     Transform transform;
+    Camera camera(glm::vec3(0.0,0.0,-5.0), 70.0f, 600/600, 0.01f, 1000.0f);
 
     float counter = 0.0f;
     while(!display.isClosed()){
@@ -31,11 +32,12 @@ int main(){
         float cosC = cosf(counter);
         float sinC = sinf(counter); 
         transform.get_pos().x =cosC;
-        transform.get_rot().z = sinC;
+        transform.get_pos().z =cosC;
+        transform.get_rot().z = counter;
 
         shader.bind();
         texture.bind(0);
-        shader.update(transform);
+        shader.update(transform,camera);
         mesh.draw();
         
         display.update();
