@@ -31,9 +31,9 @@ int main(){
         
         float cosC = cosf(counter);
         float sinC = sinf(counter); 
-        transform.get_pos().x =cosC;
+       // transform.get_pos().x =cosC;
         transform.get_pos().z =cosC;
-        transform.get_rot().z = counter;
+       //transform.get_rot().z = counter;
 
         shader.bind();
         texture.bind(0);
