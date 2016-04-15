@@ -3,6 +3,10 @@
 
 #include <glm/glm.hpp>
 #include<OpenGL/gl.h>
+#include<string>
+
+#include"obj_loader.h"
+
 class Vertex
 {
     //x, y, z coordinates [-1,1]
@@ -24,7 +28,8 @@ class Vertex
 class Mesh
 {
     public:
-        Mesh(Vertex* vertices, unsigned int numVertices);
+        Mesh(const std::string& filename);
+        Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int num_indices);
         void draw();
         virtual ~Mesh();
     protected:
@@ -32,10 +37,15 @@ class Mesh
         Mesh(const Mesh& other){}
         void operator=(const Mesh& other){}
 
+        void init_mesh(const IndexedModel& model);
+
         enum
         {
             POSITION_VB,
             TEX_COORD_VB,
+
+            INDEX_VB, //indexed vertex buffer
+
             NUM_BUFFERS
         };
 
