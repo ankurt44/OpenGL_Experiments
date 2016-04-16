@@ -1,6 +1,7 @@
 #include"mesh.h"
 #include<vector>
 #include<string>
+#include<iostream>
 #include"obj_loader.h"
 
 using namespace std;
@@ -50,17 +51,16 @@ void Mesh::init_mesh(const IndexedModel& model)
     
     //create and enable buffer object
     glGenBuffers(NUM_BUFFERS, m_VABs);
+
     glBindBuffer(GL_ARRAY_BUFFER, m_VABs[POSITION_VB]);
     glBufferData(GL_ARRAY_BUFFER, model.positions.size()*sizeof(model.positions[0]), &(model.positions[0]), GL_STATIC_DRAW);
-
     //attacj data to buffers
     glEnableVertexAttribArray(0); //comes from shader: position
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0); //0:one attribute pos, pieces of data:3 and type:FLOAT
     
     glBindBuffer(GL_ARRAY_BUFFER, m_VABs[TEX_COORD_VB]);
     glBufferData(GL_ARRAY_BUFFER, model.tex_coords.size()*sizeof(model.tex_coords[0]), &(model.tex_coords[0]), GL_STATIC_DRAW);
-
-    //attach data to buffers
+    //attach tex_coord data to buffers
     glEnableVertexAttribArray(1); //comes from shader: texture coordinate
     glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,0); //0:one attribute pos, pieces of data:3 and type:FLOAT
     
@@ -82,5 +82,5 @@ void Mesh::draw()
     //unbind until next use
     glBindVertexArrayAPPLE(0);
 
-    glFlush();
+//    glFlush();
 }

@@ -17,8 +17,8 @@ Display::Display(int width, int height, const string& title){
     
     //as long as the object is conves, 
     //this is an easy fix for hidden surface removal
-    //glEnable(GL_CULL_FACE);
-    //glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 }
 
 Display::~Display(){
