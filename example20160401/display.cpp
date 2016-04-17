@@ -9,12 +9,15 @@ Display::Display(int width, int height, const string& title){
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);     //enable depth testing, to check pixel overriding
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
     glContext = SDL_GL_CreateContext(window);
 
     m_isClosed =false;
     
+    glEnable(GL_DEPTH_TEST); //clear depth buffer in function glClearColor and using flag GL_DEPTH_BUFFER_BIT
+
     //as long as the object is conves, 
     //this is an easy fix for hidden surface removal
     glEnable(GL_CULL_FACE);
@@ -29,7 +32,7 @@ Display::~Display(){
 
 void Display::clear(float r, float g, float b, float a){
     glClearColor(r,g,b,a);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 }
 
 bool Display::isClosed(){
