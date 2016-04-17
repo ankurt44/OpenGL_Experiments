@@ -28,7 +28,7 @@ int main(){
     unsigned int indices[6] = {3, 4, 5, 0, 1, 2};
 
     //Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]), indices, sizeof(indices)/sizeof(indices[0]));
-    Mesh mesh("./res/square1.obj");
+    Mesh mesh("./res/monkey3.obj");
     Shader shader("./res/basicShader");
     Texture texture("./res/agnes.jpg");
     Transform transform;
@@ -36,14 +36,14 @@ int main(){
 
     float counter = 0.0f;
     while(!display.isClosed()){
-        display.clear(0.0f, 0.15f, 0.3f, 1.0f);
+        display.clear(1.0f, 1.0f, 1.0f, 0.0f);
         
         float cosC = cosf(counter);
         float sinC = sinf(counter); 
         //transform.get_pos().x =cosC;
         //transform.get_pos().z =cosC;
         transform.get_rot().y = counter;
-        //transform.get_rot().z = counter;
+        transform.get_rot().z = counter;
 
         shader.bind();
         texture.bind(0);
