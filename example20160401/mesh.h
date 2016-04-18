@@ -11,18 +11,21 @@ class Vertex
 {
     //x, y, z coordinates [-1,1]
     public:
-        Vertex(const glm::vec3& pos, const glm::vec2& tex_coord)
+        Vertex(const glm::vec3& pos, const glm::vec2& tex_coord, const glm::vec3& normal = glm::vec3(0.0, 0.0, 0.0))
         {
             this->pos = pos;
             this->tex_coord = tex_coord;
+            this->normal = normal;
         }
         inline glm::vec3* get_pos(){return &pos;}
         inline glm::vec2* get_tex_coord(){return &tex_coord;}
+        inline glm::vec3* get_normal(){return &normal;}
     protected:
     private:
         //vertex attributes: position, color etc
         glm::vec3 pos;
         glm::vec2 tex_coord;
+        glm::vec3 normal; //up direction
 };
 
 class Mesh
@@ -43,7 +46,7 @@ class Mesh
         {
             POSITION_VB,
             TEX_COORD_VB,
-
+            NORMAL_VB,
             INDEX_VB, //indexed vertex buffer
 
             NUM_BUFFERS

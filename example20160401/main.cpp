@@ -30,7 +30,7 @@ int main(){
     //Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]), indices, sizeof(indices)/sizeof(indices[0]));
     Mesh mesh("./res/monkey3.obj");
     Shader shader("./res/basicShader");
-    Texture texture("./res/agnes.jpg");
+    Texture texture("./res/bricks.jpg");
     Transform transform;
     Camera camera(glm::vec3(0.0,0.0,-5.0), 70.0f, 600/600, 0.01f, 1000.0f);
 

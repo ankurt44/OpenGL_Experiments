@@ -28,6 +28,7 @@ Shader::Shader(const string& filename)
 
     glBindAttribLocation(m_program, 0, "position"); //what part of the data to read; what exactly 
     glBindAttribLocation(m_program, 1, "tex_coord"); 
+    glBindAttribLocation(m_program, 2, "normal"); 
     
     //"program" = from vertex shader
 

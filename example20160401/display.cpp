@@ -17,8 +17,10 @@ Display::Display(int width, int height, const string& title){
     m_isClosed =false;
     
     glEnable(GL_DEPTH_TEST); //clear depth buffer in function glClearColor and using flag GL_DEPTH_BUFFER_BIT
+                             //using BSP (binary space partition is another method for hidden pixel removal - more efficient than checking pixels from back to front)   
+                            //BSP is not used in this example
 
-    //as long as the object is conves, 
+                             //as long as the object is convex, 
     //this is an easy fix for hidden surface removal
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);

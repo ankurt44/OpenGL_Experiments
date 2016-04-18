@@ -25,6 +25,7 @@ Mesh::Mesh(Vertex* vertices, unsigned int num_vertices, unsigned int* indices, u
     {
         model.positions.push_back(*vertices[i].get_pos());
         model.tex_coords.push_back(*vertices[i].get_tex_coord());
+        model.normals.push_back(*vertices[i].get_normal());
     }
 
     for(int i=0; i<num_indices; i++)
@@ -63,6 +64,12 @@ void Mesh::init_mesh(const IndexedModel& model)
     //attach tex_coord data to buffers
     glEnableVertexAttribArray(1); //comes from shader: texture coordinate
     glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,0); //0:one attribute pos, pieces of data:3 and type:FLOAT
+    
+    glBindBuffer(GL_ARRAY_BUFFER, m_VABs[NORMAL_VB]);
+    glBufferData(GL_ARRAY_BUFFER, model.normals.size()*sizeof(model.normals[0]), &(model.normals[0]), GL_STATIC_DRAW);
+    //attach tex_coord data to buffers
+    glEnableVertexAttribArray(2); //comes from shader: texture coordinate
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0); //2:second attribute pos, pieces of data:3 and type:FLOAT
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_VABs[INDEX_VB]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.indices.size()*sizeof(model.indices[0]), &(model.indices[0]), GL_STATIC_DRAW);
