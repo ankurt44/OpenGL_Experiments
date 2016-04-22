@@ -16,6 +16,11 @@ class Camera
             m_forward = glm::vec3(0, 0, 1); //z is forward
             m_up = glm::vec3(0, 1, 0);    //y is up
         }
+        
+        inline void set_pos(const glm::vec3 pos)
+        {
+            m_position = pos;
+        }
 
         //similar to get_model in transform.h
         inline glm::mat4 get_view_projection() const

@@ -1,4 +1,3 @@
-#include<iostream>
 #include"display.h"
 #include"shader.h"
 #include"mesh.h"
@@ -6,9 +5,14 @@
 #include"transform.h"
 #include"camera.h"
 
+#include<iostream>
 #include<OpenGL/gl.h>
+
+#define WIDTH 800
+#define HEIGHT 800
+
 int main(){
-    Display display(600,600,"window");
+    Display display(WIDTH,HEIGHT,"window");
     
     Vertex vertices[] = {// Vertex(glm::vec3(-0.5, -0.5, 0.0), glm::vec2(0.0,0.0)),
                            // Vertex(glm::vec3(0.0,0.5,0), glm::vec2(0.5,1.0)),
@@ -32,14 +36,17 @@ int main(){
     Shader shader("./res/basicShader");
     Texture texture("./res/bricks.jpg");
     Transform transform;
-    Camera camera(glm::vec3(0.0,0.0,-5.0), 70.0f, 600/600, 0.01f, 1000.0f);
+    Camera camera(glm::vec3(0.0,0.0,-7.0), 70.0f, WIDTH/HEIGHT, 0.01f, 1000.0f);
 
     float counter = 0.0f;
     while(!display.isClosed()){
         display.clear(1.0f, 1.0f, 1.0f, 0.0f);
-        
+
         float cosC = cosf(counter);
         float sinC = sinf(counter); 
+        
+        camera.set_pos(glm::vec3(0.0,0.0,sinC*5-4));
+        
         //transform.get_pos().x =cosC;
         //transform.get_pos().z =cosC;
         transform.get_rot().y = counter;
