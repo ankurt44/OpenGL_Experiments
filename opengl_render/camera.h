@@ -17,15 +17,24 @@ class Camera
             m_up = glm::vec3(0, 1, 0);    //y is up
         }
         
+        inline glm::vec3 get_pos()
+        {
+            return m_position;
+        }
+
         inline void set_pos(const glm::vec3 pos)
         {
             m_position = pos;
         }
 
+        inline void set_forward(const glm::vec3 forward)
+        {
+            m_forward = forward;
+        }
         //similar to get_model in transform.h
         inline glm::mat4 get_view_projection() const
         {
-            return m_perspective* glm::lookAt(m_position, m_position + m_forward, m_up);
+            return m_perspective* glm::lookAt(m_position, m_position - m_forward, m_up);
         }
     protected:
     private:
