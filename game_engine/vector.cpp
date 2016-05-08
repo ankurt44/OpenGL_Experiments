@@ -32,55 +32,49 @@ Vector2f Vector2f::rotate(float angle)
     return result;
 }
 
-Vector2f Vector2f::add(Vector2f& other)
+Vector2f operator+(const Vector2f& v1, const Vector2f& v2)
 {
-    Vector2f result(x+other.getX(), y+other.getY());
-    return result;
+    return *(new Vector2f(v1.getX()+v2.getX(), v1.getY()+v2.getY()));
 }
 
-Vector2f Vector2f::add(float scalar)
+Vector2f operator+(const Vector2f& v1, float val)
 {
-    Vector2f result(x+scalar, y+scalar);
-        return result;
+    return *(new Vector2f(v1.getX()+val, v1.getY()+val));
 }
 
-Vector2f Vector2f::sub(Vector2f& other)
+Vector2f operator-(const Vector2f& v1, const Vector2f& v2)
 {
-    Vector2f result(x-other.getX(), y-other.getY());
-    return result;
+    return *(new Vector2f(v1.getX()-v2.getX(), v1.getY()-v2.getY()));
+}
+             
+Vector2f operator-(const Vector2f& v1, float val)
+{
+    return *(new Vector2f(v1.getX()-val, v1.getY()-val));
 }
 
-Vector2f Vector2f::sub(float scalar)
+Vector2f operator*(const Vector2f& v1, const Vector2f& v2)
 {
-    Vector2f result(x-scalar, y-scalar);
-    return result;
+    return *(new Vector2f(v1.getX()*v2.getX(), v1.getY()*v2.getY()));
 }
 
-Vector2f Vector2f::mul(Vector2f& other)
+Vector2f operator*(const Vector2f& v1, float val)
 {
-    Vector2f result(x*other.getX(), y*other.getY());
-    return result;
+    return *(new Vector2f(v1.getX()*val, v1.getY()*val));
 }
 
-Vector2f Vector2f::mul(float scalar)
+Vector2f operator/(const Vector2f& v1, const Vector2f& v2)
 {
-    Vector2f result(x*scalar, y*scalar);
-        return result;
+    return *(new Vector2f(v1.getX()/v2.getX(), v1.getY()/v2.getY()));
 }
 
-Vector2f Vector2f::div(Vector2f& other)
+Vector2f operator/(const Vector2f& v1, float val)
 {
-    Vector2f result(x/other.getX(), y/other.getY());
-    return result;
+    return *(new Vector2f(v1.getX()/val, v1.getY()/val));
 }
 
-Vector2f Vector2f::div(float scalar)
-{
-    Vector2f result(x/scalar, y/scalar);
-        return result;
-}
 
-float Vector2f::getX()
+//getter and setter
+float Vector2f::getX() const
 {
     return x;
 }
@@ -90,7 +84,7 @@ void Vector2f::setX(float x)
     this->x = x;
 }
 
-float Vector2f::getY()
+float Vector2f::getY() const
 {
     return y;
 }
@@ -135,55 +129,47 @@ Vector3f Vector3f::cross_product(Vector3f other)
     return *(new Vector3f(x_, y_, z_));
 }
 
-Vector3f Vector3f::add(Vector3f& other)
+Vector3f operator+(const Vector3f& v1, const Vector3f& v2)
 {
-    Vector3f result(x+other.getX(), y+other.getY(), z+other.getZ());
-    return result;
+    return *(new Vector3f(v1.getX()+v2.getX(), v1.getY()+v2.getY(), v1.getZ()+v2.getZ()));
 }
 
-Vector3f Vector3f::add(float scalar)
+Vector3f operator+(const Vector3f& v1, float val)
 {
-    Vector3f result(x+scalar, y+scalar, z+scalar);
-        return result;
+    return *(new Vector3f(v1.getX()+val, v1.getY()+val, v1.getZ()+val));
 }
 
-Vector3f Vector3f::sub(Vector3f& other)
+Vector3f operator-(const Vector3f& v1, const Vector3f& v2)
 {
-    Vector3f result(x-other.getX(), y-other.getY(), z-other.getZ());
-    return result;
+    return *(new Vector3f(v1.getX()-v2.getX(), v1.getY()-v2.getY(), v1.getZ()-v2.getZ()));
 }
 
-Vector3f Vector3f::sub(float scalar)
+Vector3f operator-(const Vector3f& v1, float val)
 {
-    Vector3f result(x-scalar, y-scalar, z-scalar);
-        return result;
+    return *(new Vector3f(v1.getX()-val, v1.getY()-val, v1.getZ()-val));
 }
 
-Vector3f Vector3f::mul(Vector3f& other)
+Vector3f operator*(const Vector3f& v1, const Vector3f& v2)
 {
-    Vector3f result(x*other.getX(), y*other.getY(), z*other.getZ());
-    return result;
+    return *(new Vector3f(v1.getX()*v2.getX(), v1.getY()*v2.getY(), v1.getZ()*v2.getZ()));
 }
 
-Vector3f Vector3f::mul(float scalar)
+Vector3f operator*(const Vector3f& v1, float val)
 {
-    Vector3f result(x*scalar, y*scalar, z*scalar);
-        return result;
+    return *(new Vector3f(v1.getX()*val, v1.getY()*val, v1.getZ()*val));
 }
 
-Vector3f Vector3f::div(Vector3f& other)
+Vector3f operator/(const Vector3f& v1, const Vector3f& v2)
 {
-    Vector3f result(x/other.getX(), y/other.getY(), z/other.getZ());
-    return result;
+    return *(new Vector3f(v1.getX()/v2.getX(), v1.getY()/v2.getY(), v1.getZ()/v2.getZ()));
 }
 
-Vector3f Vector3f::div(float scalar)
+Vector3f operator/(const Vector3f& v1, float val)
 {
-    Vector3f result(x/scalar, y/scalar, z/scalar);
-        return result;
+    return *(new Vector3f(v1.getX()/val, v1.getY()/val, v1.getZ()/val));
 }
 
-float Vector3f::getX()
+float Vector3f::getX() const
 {
     return x;
 }
@@ -193,7 +179,7 @@ void Vector3f::setX(float x)
     this->x = x;
 }
 
-float Vector3f::getY()
+float Vector3f::getY() const
 {
     return y;
 }
@@ -203,7 +189,7 @@ void Vector3f::setY(float y)
     this->y = y;
 }
 
-float Vector3f::getZ()
+float Vector3f::getZ() const
 {
     return z;
 }

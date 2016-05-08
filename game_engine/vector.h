@@ -9,18 +9,24 @@ class Vector2f
         float dotProduct(const Vector2f other);
         Vector2f& normalize();
         Vector2f rotate(float angle);  //rotate vector
-        Vector2f add(Vector2f& other);
-        Vector2f add(float scalar);
-        Vector2f sub(Vector2f& other);
-        Vector2f sub(float scalar);
-        Vector2f mul(Vector2f& other);
-        Vector2f mul(float scalar);
-        Vector2f div(Vector2f& other);
-        Vector2f div(float scalar);
-        float getX();
+        
+        //operator overloading for vector addition, mult, div, sub
+        //if not "friend", take only one vector as arguement
+        friend Vector2f operator+(const Vector2f& v1, const Vector2f& v2);
+        friend Vector2f operator+(const Vector2f& v1, float val);
+        friend Vector2f operator-(const Vector2f& v1, const Vector2f& v2);
+        friend Vector2f operator-(const Vector2f& v1, float val);
+        friend Vector2f operator*(const Vector2f& v1, const Vector2f& v2);
+        friend Vector2f operator*(const Vector2f& v1, float val);
+        friend Vector2f operator/(const Vector2f& v1, const Vector2f& v2);
+        friend Vector2f operator/(const Vector2f& v1, float val);
+        
+        //getter and setter
+        float getX() const;
         void setX(float x);
-        float getY();
+        float getY() const;
         void setY(float y);
+        
         static double toRadians(double angle);
     protected:
     private:
@@ -36,19 +42,23 @@ class Vector3f
         float dotProduct(const Vector3f other);
         Vector3f& normalize();
         Vector3f cross_product(Vector3f other);
-        Vector3f add(Vector3f& other);
-        Vector3f add(float scalar);
-        Vector3f sub(Vector3f& other);
-        Vector3f sub(float scalar);
-        Vector3f mul(Vector3f& other);
-        Vector3f mul(float scalar);
-        Vector3f div(Vector3f& other);
-        Vector3f div(float scalar);
-        float getX();
+        
+        //add sub mult div of vectors
+        friend Vector3f operator+(const Vector3f& v1, const Vector3f& v2);
+        friend Vector3f operator+(const Vector3f& v1, float val);
+        friend Vector3f operator-(const Vector3f& v1, const Vector3f& v2);
+        friend Vector3f operator-(const Vector3f& v1, float val);
+        friend Vector3f operator*(const Vector3f& v1, const Vector3f& v2);
+        friend Vector3f operator*(const Vector3f& v1, float val);
+        friend Vector3f operator/(const Vector3f& v1, const Vector3f& v2);
+        friend Vector3f operator/(const Vector3f& v1, float val);
+        
+        //getter and setter
+        float getX() const;
         void setX(float);
-        float getY();
+        float getY() const;
         void setY(float);
-        float getZ();
+        float getZ() const;
         void setZ(float);
     protected:
     private:
